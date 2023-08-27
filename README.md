@@ -10,9 +10,12 @@ Boa Farra pretende ser uma pequena rede social para os frequentadores de bares d
 
 Membros da Equipe:
 
-João Gabriel - 
-Leonardo Salim -
-Salvador -
+João Gabriel - Full Stack
+
+Leonardo Salim - Full Stack
+
+Salvador - Full Stack
+
 Vítor Vaz Moreira - Full Stack
 
 Tecnologias:
