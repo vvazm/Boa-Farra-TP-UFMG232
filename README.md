@@ -22,13 +22,19 @@ Tecnologias:
 
 Frontend:
 -- Angular
+--- TypeScript 
 --- Angular Material for Template
 --- Npm for dependencies
 --- Docker for Containerization and Deployment
---- TypeScript 
+
 
 Backend:
 -- Node
+--- JavaScript
+--- Express
+--- Npm for dependencies
+--- Docker for Containerization and Deployment
 
 Database:
 -- MongoDB
+--- Standalone deployment
