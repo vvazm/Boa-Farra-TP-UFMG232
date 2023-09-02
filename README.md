@@ -58,31 +58,31 @@ Database:
 - Como usuário, gostaria de ter uma conta que posso usar para autenticar no sistema.
 	- Como usuário, gostaria de Criar conta
 		- Formulario Frontend @leosalim
-		- Rest Backend - POST
+		- Rest Backend - POST @JoneGabriel
 		- Tabela Conta 
 	- Como usuário, gostaria de Fazer Login
 		- Formulário Login @leosalim
 		- Filtro de autenticação Login Frontend (Adiciona o token a requisições feitas por um usuario autenticado)
-		- Rest Backend - POST
+		- Rest Backend - POST @JoneGabriel
 	- Como usuário, gostaria de Visualizar minha conta	
 		- Formulário FrontEnd 
 		- Rest Backend - GET
 	- Como usuário, gostaria de Alterar minha foto
 		- Botão alterar foto no formulário visualizar conta
-		- Rest Backend - POST
+		- Rest Backend - POST @JoneGabriel
 	- Como usuário, gostaria de Alterar senha 
 		- Formulario alterar senha, apartir do minha conta
-		- Backend alterar senha - POST
+		- Backend alterar senha - POST @JoneGabriel
 - Como usuário, gostaria de visualizar as ultimas fotos por bares em um feed cronologico.
 	- Feed
 		- Componente Post Frontend @leosalim
 		- Componente Feed Frontend @leosalim
-		- Rest Backend - GET
+		- Rest Backend - GET @JoneGabriel
 		- Tabela Posts
 - Como usúario, gostaria de postar uma foto em um bar.
 	- Formulário postar foto
 		- Formulário Frontend
-		- Rest Backend - POST
+		- Rest Backend - POST @JoneGabriel
 
 - Como bar gostaria de visualizar todos os usuarios que compartilharam posts do meu bar.
 	- Componente meus fregueses
