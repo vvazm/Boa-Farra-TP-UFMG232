@@ -62,7 +62,7 @@ Database:
 		- Tabela Conta @vvazm
 	- Como usuário, gostaria de Fazer Login
 		- Formulário Login @leosalim
-		- Filtro de autenticação Login Frontend (Adiciona o token a requisições feitas por um usuario autenticado)
+		- Filtro de autenticação Login Frontend (Adiciona o token a requisições feitas por um usuario autenticado) @salvadorCSJ
 		- Rest Backend - POST @JoneGabriel
 	- Como usuário, gostaria de Visualizar minha conta	
 		- Formulário FrontEnd @vvazm
@@ -71,7 +71,7 @@ Database:
 		- Botão alterar foto no formulário visualizar conta
 		- Rest Backend - POST @JoneGabriel
 	- Como usuário, gostaria de Alterar senha 
-		- Formulario alterar senha, apartir do minha conta
+		- Formulario alterar senha, apartir do minha conta @salvadorCSJ
 		- Backend alterar senha - POST @JoneGabriel
 - Como usuário, gostaria de visualizar as ultimas fotos por bares em um feed cronologico.
 	- Feed
@@ -81,11 +81,11 @@ Database:
 		- Tabela Posts @vvazm
 - Como usúario, gostaria de postar uma foto em um bar.
 	- Formulário postar foto
-		- Formulário Frontend
+		- Formulário Frontend @salvadorCSJ
 		- Rest Backend - POST @JoneGabriel
 
 - Como bar gostaria de visualizar todos os usuarios que compartilharam posts do meu bar.
 	- Componente meus fregueses
 		- Componente recebe JSON, e lista em tela, os nomes dos fregueses fotos, numero de checkin.
-	- Backend Listar Checkins feitos no meu bar
+	- Backend Listar Checkins feitos no meu bar 
 		- Retorna array JSON com nome do fregues, numero de checkins no meu bar, e foto do cliente.
