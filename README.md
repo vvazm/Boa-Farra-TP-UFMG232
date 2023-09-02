@@ -55,15 +55,15 @@ Database:
 # Backlog da Sprint:
 - Como usuário, gostaria de ter uma conta que posso usar para autenticar no sistema.
 	- Como usuário, gostaria de Criar conta
-		- Formulario Frontend
+		- Formulario Frontend @leosalim
 		- Rest Backend - POST
 		- Tabela Conta 
 	- Como usuário, gostaria de Fazer Login
-		- Formulário Login
+		- Formulário Login @leosalim
 		- Filtro de autenticação Login Frontend (Adiciona o token a requisições feitas por um usuario autenticado)
 		- Rest Backend - POST
 	- Como usuário, gostaria de Visualizar minha conta	
-		- Formulário FrontEnd
+		- Formulário FrontEnd 
 		- Rest Backend - GET
 	- Como usuário, gostaria de Alterar minha foto
 		- Botão alterar foto no formulário visualizar conta
@@ -73,8 +73,8 @@ Database:
 		- Backend alterar senha - POST
 - Como usuário, gostaria de visualizar as ultimas fotos por bares em um feed cronologico.
 	- Feed
-		- Componente Post Frontend
-		- Componente Feed Frontend
+		- Componente Post Frontend @leosalim
+		- Componente Feed Frontend @leosalim
 		- Rest Backend - GET
 		- Tabela Posts
 - Como usúario, gostaria de postar uma foto em um bar.
