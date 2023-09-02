@@ -20,24 +20,24 @@ Vítor Vaz Moreira - Full Stack
 
 # Tecnologias:
 
-Frontend:
--- Angular
---- TypeScript 
---- Angular Material for Template
---- Npm for dependencies
---- Docker for Containerization and Deployment
+- Frontend:
+	- Angular
+	- TypeScript 
+	- Angular Material for Template
+	- Npm for dependencies
+	- Docker for Containerization and Deployment
 
 
-Backend:
--- Node
---- JavaScript
---- Express
---- Npm for dependencies
---- Docker for Containerization and Deployment
+- Backend:
+	- Node
+		- JavaScript
+	- Express
+	- Npm for dependencies
+	- Docker for Containerization and Deployment
 
-Database:
--- MongoDB
---- Standalone deployment
+- Database:
+	- MongoDB
+	- Standalone deployment
 
 # Backlog das Histórias:
 - Como usuário, gostaria de ter uma conta que posso usar para autenticar no sistema.
@@ -86,6 +86,6 @@ Database:
 
 - Como bar gostaria de visualizar todos os usuarios que compartilharam posts do meu bar.
 	- Componente meus fregueses
-		- Componente recebe JSON, e lista em tela, os nomes dos fregueses fotos, numero de checkin.
+		- Componente recebe JSON, e lista em tela, os nomes dos fregueses fotos, numero de checkin. @salvadorCSJ
 	- Backend Listar Checkins feitos no meu bar 
-		- Retorna array JSON com nome do fregues, numero de checkins no meu bar, e foto do cliente.
+		- Retorna array JSON com nome do fregues, numero de checkins no meu bar, e foto do cliente. @leosalim
