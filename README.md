@@ -59,14 +59,14 @@ Database:
 	- Como usuário, gostaria de Criar conta
 		- Formulario Frontend @leosalim
 		- Rest Backend - POST @JoneGabriel
-		- Tabela Conta 
+		- Tabela Conta @vvazm
 	- Como usuário, gostaria de Fazer Login
 		- Formulário Login @leosalim
 		- Filtro de autenticação Login Frontend (Adiciona o token a requisições feitas por um usuario autenticado)
 		- Rest Backend - POST @JoneGabriel
 	- Como usuário, gostaria de Visualizar minha conta	
-		- Formulário FrontEnd 
-		- Rest Backend - GET
+		- Formulário FrontEnd @vvazm
+		- Rest Backend - GET @vvazm
 	- Como usuário, gostaria de Alterar minha foto
 		- Botão alterar foto no formulário visualizar conta
 		- Rest Backend - POST @JoneGabriel
@@ -78,7 +78,7 @@ Database:
 		- Componente Post Frontend @leosalim
 		- Componente Feed Frontend @leosalim
 		- Rest Backend - GET @JoneGabriel
-		- Tabela Posts
+		- Tabela Posts @vvazm
 - Como usúario, gostaria de postar uma foto em um bar.
 	- Formulário postar foto
 		- Formulário Frontend
