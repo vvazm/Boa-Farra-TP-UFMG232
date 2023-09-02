@@ -53,6 +53,8 @@ Database:
 - Como bar, gostaria de promover um post do meu bar. (EPICA)
 
 # Backlog da Sprint:
+- Implementar Base Tecnologica Frontend: Angular com Angular Material. @leosalim
+- Implementar Base Tecnologica Backend: Node.JS com Express.
 - Como usuário, gostaria de ter uma conta que posso usar para autenticar no sistema.
 	- Como usuário, gostaria de Criar conta
 		- Formulario Frontend @leosalim
