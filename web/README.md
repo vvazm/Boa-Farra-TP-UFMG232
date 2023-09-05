@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+# Docker
+
+## Building the Docker Image
+To build the docker image run `docker build -t boa-farra-web .` 
+
+## Running the Docker Image
+To run the docker image run `docker run -p 8080:80 boa-farra-web` 
