@@ -5,6 +5,8 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { FeedComponent } from './feed/feed.component';
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'createAccount', component: CreateAccountComponent },
   { path: '', component: FeedComponent },
 ];
 
