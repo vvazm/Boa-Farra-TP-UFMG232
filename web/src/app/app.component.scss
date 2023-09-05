@@ -1,0 +1,54 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+button {
+    margin: 0 5px;
+}
+
+.fixed-toolbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; 
+  }
+
+  .circle-button {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .user-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover; 
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    width: 160px;
+    left: -120px;
+    top: 40px;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  a:hover {
+    cursor: pointer;
+    background-color: #ddd;
+  }

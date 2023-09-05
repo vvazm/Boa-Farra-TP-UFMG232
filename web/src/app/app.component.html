@@ -1,0 +1,35 @@
+<mat-toolbar color="primary" class="fixed-toolbar">
+  <button mat-raised-button routerLink="/" color="primary">
+    <mat-icon routerLink="/">sports_bar</mat-icon>
+    <span>Boa Farra!</span>
+  </button>
+
+
+  <span class="spacer"></span>
+
+  <button mat-raised-button routerLink="/login"  color="accent" *ngIf="!loginStatus">
+    Login
+  </button>
+
+  <button mat-raised-button routerLink="/createAccount" *ngIf="!loginStatus">
+    Criar Conta
+  </button>
+
+  <div class="dropdown" routerLink="/account" *ngIf="loginStatus">
+    <button mat-icon-button class="circle-button" id="account-button">
+      <img [src]="userPicture" alt="User Profile" class="user-image">
+    </button>
+    <mat-card class="dropdown-content">
+      <mat-list>
+        <a mat-list-item routerLink="/account">My Account</a>
+        <a mat-list-item (click)="logout()">Logout</a>
+      </mat-list>
+    </mat-card>
+  </div>
+
+
+</mat-toolbar>
+
+
+
+<router-outlet></router-outlet>
