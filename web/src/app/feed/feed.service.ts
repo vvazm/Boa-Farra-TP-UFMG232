@@ -15,6 +15,20 @@ export class FeedService {
     const feed: Feed = {
       highlight: undefined,
       posts: [
+        {
+          barName: 'Pingucos e Alcolatras Não Anonimos Bar',
+          barPicture: '1',
+          carrousel: [
+          ],
+          people: [
+          ]
+        },
+          {
+            barName: 'Copo Sujo Ultra Beer',
+            barPicture: '2',
+            carrousel: [
+            ]
+          }
       ]
     }
 

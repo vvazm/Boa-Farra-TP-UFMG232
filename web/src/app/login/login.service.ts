@@ -13,6 +13,7 @@ export class LoginService {
   }
 
   getUserPicture() {
+    return '../../assets/testImages/leonardosalim.jpg';
   }
 
   login() {
