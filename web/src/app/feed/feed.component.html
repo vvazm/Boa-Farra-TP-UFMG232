@@ -1,3 +1,22 @@
 <div class="feed-container">
+  <button mat-raised-button color="primary" class="add-picture-button" *ngIf="loginStatus"
+  (click)="addPicture()" >
+    <h2>Adicionar Foto</h2>
+  </button>
+
+  <mat-card *ngFor="let post of feed.posts" class="post-card">
+    <h1>{{ post.barName }} : {{ post.barPicture }}</h1>
+
+    <app-gallery [items]="post.carrousel!"></app-gallery>
+
+    <h3>Últimos Checkins</h3>
+    <div class="person-container">
+      <mat-card class="person-card" *ngFor="let person of post.people">
+        <img mat-card-image [src]="person.picture" alt="{{ person.name }}'s picture">
+        <mat-card-title class="person-legend">{{ person.name }}</mat-card-title>
+      </mat-card>
+    </div>
+
+  </mat-card>
 </div>
 

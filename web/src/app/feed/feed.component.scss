@@ -1,1 +1,67 @@
-
+.post-card {
+  max-width: 1000px;
+  margin: 30px auto;
+  background-color: #DDD;
+  padding: 40px;
+  border-radius: 30px;
+}
+
+mat-card-title {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px;
+  font-size: 0.7em;
+}
+
+h3 {
+  margin: 10px 0 0 0;
+}
+
+.person-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+
+.person-card {
+  position: relative;
+  flex: 0 0 calc(12%); 
+  max-height: 100px;
+  margin: 10px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.person-legend {
+  position: absolute;
+  bottom: 0; 
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px;
+  text-align: center;
+  opacity: 0; 
+  pointer-events: none; 
+}
+
+.person-card:hover .person-legend {
+  opacity: 1; 
+}
+
+app-gallery{
+  margin-top: 20px;
+}
+
+.feed-container {
+  text-align: center; 
+  padding-top: 30px;
+}
+
+.add-picture-button {
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 30px;
+  height: 60px;
+}

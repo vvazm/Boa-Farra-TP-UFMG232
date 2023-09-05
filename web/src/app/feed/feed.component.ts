@@ -16,11 +16,29 @@ import { LoginService } from '../login/login.service';
 })
 export class FeedComponent implements OnInit {
 
+  public feed: Feed;
+
+  public hoveredPerson: PostPerson | null = null;
+
+  public loginStatus = false;
 
   constructor(private feedService: FeedService, private loginService: LoginService) {
+    this.feed  = {
+      posts: []
+    };
+
+    this.loginStatus =  this.loginService.loginStatus.getValue();
+    this.loginService.loginStatus.subscribe(loginStatus => this.loginStatus = loginStatus);
   }
 
 
   ngOnInit(): void {
+    this.feed = this.feedService.loadFeed();
+    
   }
+
+  addPicture() {
+
+  }
+  
 }
