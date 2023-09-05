@@ -28,6 +28,7 @@ import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
+    DialogComponent,
     FeedComponent,
     LoadingSpinnerComponent,
   ],
