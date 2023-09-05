@@ -1,0 +1,11 @@
+<mat-card>
+  <h1>Fazer Login</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <input type="text" formControlName="login" placeholder="Login">
+
+      <input type="password" formControlName="password" placeholder="Senha">
+
+      <button mat-raised-button color="primary">Login</button>
+  </form>
+</mat-card>
