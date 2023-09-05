@@ -33,6 +33,7 @@ import { MatListModule } from '@angular/material/list';
     CreateAccountComponent,
     FeedComponent,
     LoadingSpinnerComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,

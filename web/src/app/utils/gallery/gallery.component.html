@@ -1,0 +1,21 @@
+<div class="gallery">
+  <div class="gallery-item" *ngIf="selectedItem" [style.position]="'relative'">
+
+
+      <button mat-icon-button class="navigation-button left-button" (click)="prevItem()" [disabled]="currentIndex === 0">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </button>
+
+      <img [src]="selectedItem.picture" alt="{{ selectedItem.author }}" class="gallery-image" *ngIf="selectedItem.picture">
+
+      <button mat-icon-button class="navigation-button right-button" (click)="nextItem()" [disabled]="currentIndex === items.length - 1">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+      <div class="dots-container">
+        <span *ngFor="let item of items; let i = index" class="dot" [ngClass]="{'current-dot': i === currentIndex}" (click)="selectItem(i)"></span>
+      </div>
+
+    
+    <div class="gallery-subtitle">Por: {{ selectedItem.author }}</div>  
+  </div>
+</div>
