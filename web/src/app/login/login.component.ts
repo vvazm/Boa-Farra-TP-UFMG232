@@ -35,10 +35,21 @@ export class LoginComponent implements OnInit {
       const password = this.loginForm.controls.password.value || '';
 
       this.loginService.submit(username, password).subscribe((resAuth: any) => {
-        this.myAccountService.getMyAccountByToken(resAuth.content).subscribe((resAccount: any) => {
-          this.loginService.login({ username }, resAccount.content['key_picture_user'],resAuth.content);
-          this.router.navigate(['/']);
-        });
+        const token = resAuth.content.jwt;
+        const usertype = resAuth.content.type;
+
+        if (usertype === 'user') {
+          this.myAccountService.getMyAccountByToken(token).subscribe((resAccount: any) => {
+            this.loginService.login({ username, usertype }, resAccount.content['key_picture_user'], token);
+            this.router.navigate(['/']);
+          });
+        } else {
+          this.myAccountService.getMyPUBAccountByToken(token).subscribe((resAccount: any) => {
+            this.loginService.login({ username, usertype }, resAccount.content['key_picture_pub'], token);
+            this.router.navigate(['/']);
+          });
+        }
+
       });
     } else {
       this.errorDialog('Dados Inválidos', 'Verifique as informações');

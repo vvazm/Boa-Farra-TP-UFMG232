@@ -33,24 +33,45 @@ export class MyAccountComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.myAccountService.getMyAccount().pipe(
-      catchError((err) => {
-        this.router.navigate(['/']);
-        throw err;
-      })
-    ).subscribe((res: any) => {
-      this.myAccountForm.controls.username.setValue(res.content['key_username_user']);
-      this.myAccountForm.controls.email.setValue(res.content['key_email_user']);
-      this.myAccountForm.controls.picture.setValue(res.content['key_picture_user']);
-    });
+    if (this.loginService.getUserType() === 'user') {
+      this.myAccountService.getMyAccount().pipe(
+        catchError((err) => {
+          this.router.navigate(['/']);
+          throw err;
+        })
+      ).subscribe((res: any) => {
+        this.myAccountForm.controls.username.setValue(res.content['key_username_user']);
+        this.myAccountForm.controls.email.setValue(res.content['key_email_user']);
+        this.myAccountForm.controls.picture.setValue(res.content['key_picture_user']);
+      });
+    } else {
+      this.myAccountService.getMyPUBAccount().pipe(
+        catchError((err) => {
+          this.router.navigate(['/']);
+          throw err;
+        })
+      ).subscribe((res: any) => {
+        this.myAccountForm.controls.username.setValue(res.content['key_name_pub']);
+        this.myAccountForm.controls.email.setValue(res.content['key_email_pub']);
+        this.myAccountForm.controls.picture.setValue(res.content['key_picture_pub']);
+      });
+    }
   }
 
   submit(): void {
     if (this.myAccountForm.valid) {
-      this.myAccountService.submit(this.myAccountForm.getRawValue()).subscribe((res: any) => {	
-        this.raiseDialog('Sucesso!', 'Conta atualizada.');
-        this.loginService.setUserPicture(this.myAccountForm.controls.picture.value || '' );
-      });
+      if (this.loginService.getUserType() === 'user') {
+        this.myAccountService.submit(this.myAccountForm.getRawValue()).subscribe((res: any) => {	
+          this.raiseDialog('Sucesso!', 'Conta atualizada.');
+          this.loginService.setUserPicture(this.myAccountForm.controls.picture.value || '' );
+        });
+      } else {
+        this.myAccountService.submitPUB(this.myAccountForm.getRawValue()).subscribe((res: any) => {	
+          this.raiseDialog('Sucesso!', 'Conta atualizada.');
+          this.loginService.setUserPicture(this.myAccountForm.controls.picture.value || '' );
+        });
+      }
+
     } else {
       this.raiseDialog('Dados Inválidos', 'Verifique as informações');
     }

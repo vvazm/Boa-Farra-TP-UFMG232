@@ -2,11 +2,17 @@
   <h1>Criar Conta</h1>
   <form [formGroup]="createAccountForm">
 
+      <div class="radio-container">
+        <mat-radio-group aria-label="Tipo de usuário" formControlName="accountType">
+          <mat-radio-button value="1">Pessoa</mat-radio-button>
+          <mat-radio-button value="2">Estabelecimento</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
       <div class="picture-container">
         <img *ngIf="createAccountForm.controls.picture.value" [src]="createAccountForm.controls.picture.value" class="picture">
       </div>
-
-
+    
       <input type="text" formControlName="username" placeholder="Login">
 
       <input type="password" formControlName="password" placeholder="Senha">

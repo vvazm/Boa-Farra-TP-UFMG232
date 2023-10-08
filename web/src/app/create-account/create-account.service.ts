@@ -10,6 +10,7 @@ import { DialogComponent } from '../modals/dialog/dialog.component';
 export class CreateAccountService {
   
   restAdress = 'http://localhost:4444/user';
+  restAdressPub = 'http://localhost:4444/pub';
 
   constructor(
     private http: HttpClient,
@@ -26,6 +27,23 @@ export class CreateAccountService {
     };  
 
     return this.http.post(this.restAdress, postJSON).pipe(
+      catchError((err: HttpErrorResponse) => {
+        this.raiseDialog('Ops!', err.error.content); 
+        throw err;
+      })
+    );
+  }
+
+  submitPub(form: any) {
+    const postJSON = {
+      name: form.username,
+      password: form.password,
+      confirm_password: form.confirm_password,
+      email: form.email,
+      picture: form.picture
+    };  
+
+    return this.http.post(this.restAdressPub, postJSON).pipe(
       catchError((err: HttpErrorResponse) => {
         this.raiseDialog('Ops!', err.error.content); 
         throw err;

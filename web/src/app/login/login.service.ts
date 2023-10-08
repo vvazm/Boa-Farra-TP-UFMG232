@@ -13,7 +13,7 @@ export class LoginService {
   restAdress = 'http://localhost:4444/auth';
 
   public loginStatus: BehaviorSubject<boolean>;
-  private userIdentity: UserIdentity = { username: ''};
+  private userIdentity: UserIdentity = { username: '', usertype: ''};
   private token: string = '';
 
   public userPicture: BehaviorSubject<string>;
@@ -32,7 +32,7 @@ export class LoginService {
     } else {
       this.loginStatus = new BehaviorSubject<boolean>(false);
       this.userPicture = new BehaviorSubject<string>('');
-      this.userIdentity = { username: '' };
+      this.userIdentity = { username: '', usertype: '' };
     }
   }
 
@@ -46,10 +46,21 @@ export class LoginService {
 
   setUserPicture(picture: string) {
     this.userPicture.next(picture);
+
+    const userStore = localStorage.getItem('userStore');
+    if (userStore) {
+      const userStoreObj: UserStore = JSON.parse(userStore);
+      userStoreObj.picture = picture;
+      localStorage.setItem('userStore', JSON.stringify(userStoreObj));
+    }
   }
 
   getUserToken(): string {
     return this.token;
+  }
+
+  getUserType(): string {
+    return this.userIdentity.usertype;
   }
 
   submit(username: string, password: string) {
@@ -83,7 +94,7 @@ export class LoginService {
 
   logout() {
     this.loginStatus.next(false);
-    this.userIdentity = { username: ''};
+    this.userIdentity = { username: '', usertype: ''};
     this.userPicture.next('');
     this.token = '';
 

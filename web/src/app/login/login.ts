@@ -5,6 +5,7 @@ export interface Login {
 
 export interface UserIdentity { 
   username: string | null;
+  usertype: string;
 }
 
 export interface UserStore { 
