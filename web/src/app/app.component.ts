@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,22 +13,23 @@ export class AppComponent implements OnInit {
   loginStatus = false;
   userPicture = '';
 
-  constructor(private loginService: LoginService) { }
+  constructor(
+    private loginService: LoginService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.loginStatus = this.loginService.loginStatus.getValue();
     this.loginService.loginStatus.subscribe(loginStatus => {
       this.loginStatus = loginStatus;
-      if (loginStatus) {
-        this.userPicture = this.loginService.getUserPicture();
-      } else {
-        this.userPicture = '';
-      }
     });
-    
+    this.loginService.userPicture.subscribe(userPicture => {
+      this.userPicture = userPicture;
+    });
   }
 
   logout() {
     this.loginService.logout();
+    this.router.navigate(['/']);
   }
 }

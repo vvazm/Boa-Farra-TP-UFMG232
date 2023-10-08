@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../modals/dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CreateAccountService {
+export class MyAccountService {
   
   restAdress = 'http://localhost:4444/user';
 
@@ -16,21 +16,17 @@ export class CreateAccountService {
     private dialog: MatDialog
   ) {}
 
-  submit(form: any) {
-    const postJSON = {
-      username: form.username,
-      password: form.password,
-      confirm_password: form.confirm_password,
-      email: form.email,
-      picture: form.picture
-    };  
-
-    return this.http.post(this.restAdress, postJSON).pipe(
+  getMyAccountByToken(token: string) {
+    const headers = {
+      Authorization: `Bearer ${token}`
+    };
+    return this.http.get(this.restAdress, { headers })
+    .pipe(
       catchError((err: HttpErrorResponse) => {
-        this.raiseDialog('Ops!', err.error.content); 
+        this.raiseDialog('Ops!', 'Erro ao recuperar dados do usuário, tente novamente mais tarde');
         throw err;
       })
-    );
+    )
   }
 
   raiseDialog(title: string, message: string): void {

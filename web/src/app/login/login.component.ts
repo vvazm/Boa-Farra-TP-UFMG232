@@ -1,12 +1,10 @@
-import { ViewChild } from '@angular/core';
-import { TemplateRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from './login.service';
 import { DialogComponent } from '../modals/dialog/dialog.component';
 import { Router } from '@angular/router';
-import { LoadOverlayService } from '../utils/load-overlay-service.service';
+import { MyAccountService } from '../my-account/my-account.service';
 
 @Component({
   selector: 'app-login',
@@ -16,36 +14,37 @@ import { LoadOverlayService } from '../utils/load-overlay-service.service';
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    login: new FormControl('', [Validators.required]),
+    username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required])
   });
 
-  constructor(private dialog: MatDialog, private loginService: LoginService, private router: Router, private loadOverlayService: LoadOverlayService) {
-
-  }
+  constructor(
+    private dialog: MatDialog, 
+    private loginService: LoginService, 
+    private router: Router,
+    private myAccountService: MyAccountService
+  ) { }
 
   ngOnInit(): void {
 
   }
 
   onSubmit(): void {
-    this.loadOverlayService.raise();
+    if (this.loginForm.valid) {
+      const username = this.loginForm.controls.username.value || '';
+      const password = this.loginForm.controls.password.value || '';
 
-    setTimeout(() => {
-      this.loadOverlayService.abate();
-      if (this.loginForm.valid) {
-        if (true) {
-          this.loginService.login();
+      this.loginService.submit(username, password).subscribe((resAuth: any) => {
+        this.myAccountService.getMyAccountByToken(resAuth.content).subscribe((resAccount: any) => {
+          this.loginService.login({ username }, resAccount.content['key_picture_user'],resAuth.content);
           this.router.navigate(['/']);
-        } else {
-          this.errorDialog('E-mail ou senha inválidos', 'Verifique as informações');
-        }
-      } else {
-        this.errorDialog('Dados Inválidos', 'Verifique as informações');
-      }
-    }, 500)
-    
+        });
+      });
+    } else {
+      this.errorDialog('Dados Inválidos', 'Verifique as informações');
+    }
   }
+  
 
   errorDialog(title: string, message: string): void {
     const dialogRef = this.dialog.open(DialogComponent, {

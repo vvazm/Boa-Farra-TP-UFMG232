@@ -2,9 +2,16 @@
   <h1>Criar Conta</h1>
   <form [formGroup]="createAccountForm">
 
-      <input type="text" formControlName="login" placeholder="Login">
+      <div class="picture-container">
+        <img *ngIf="createAccountForm.controls.picture.value" [src]="createAccountForm.controls.picture.value" class="picture">
+      </div>
+
+
+      <input type="text" formControlName="username" placeholder="Login">
 
       <input type="password" formControlName="password" placeholder="Senha">
+
+      <input type="password" formControlName="confirm_password" placeholder="Confirmação de Senha">
 
       <input type="email" formControlName="email" placeholder="E-Mail">
 

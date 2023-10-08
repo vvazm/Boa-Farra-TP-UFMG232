@@ -18,12 +18,15 @@ import { DialogComponent } from './modals/dialog/dialog.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { FeedComponent } from './feed/feed.component';
 import { LoadingSpinnerComponent } from './utils/loading-spinner/loading-spinner.component';
-import { LoadOverlayService } from './utils/load-overlay-service.service';
+import { LoadingSpinnerService } from './utils/loading-spinner/loading-spinner.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { GalleryComponent } from './utils/gallery/gallery.component';
 import { FeedService } from './feed/feed.service';
 import { CreateAccountService } from './create-account/create-account.service';
 import { MatListModule } from '@angular/material/list';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './login/auth.intercptor';
+import { LoadingSpinnerInterceptor } from './utils/loading-spinner/loading-spinner.intercptor';
 
 @NgModule({
   declarations: [
@@ -46,13 +49,24 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-    MatListModule  
+    MatListModule,
+    HttpClientModule  
   ],
   providers: [
     LoginService,
-    LoadOverlayService,
+    LoadingSpinnerService,
     FeedService,
-    CreateAccountService
+    CreateAccountService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingSpinnerInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
