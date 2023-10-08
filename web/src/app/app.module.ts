@@ -24,7 +24,9 @@ import { GalleryComponent } from './utils/gallery/gallery.component';
 import { FeedService } from './feed/feed.service';
 import { CreateAccountService } from './create-account/create-account.service';
 import { MatListModule } from '@angular/material/list';
+import { MyAccountComponent } from './my-account/my-account.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ChangePasswordComponent } from './modals/changepassword/changepassword.component';
 import { AuthInterceptor } from './login/auth.intercptor';
 import { LoadingSpinnerInterceptor } from './utils/loading-spinner/loading-spinner.intercptor';
 
@@ -36,7 +38,9 @@ import { LoadingSpinnerInterceptor } from './utils/loading-spinner/loading-spinn
     CreateAccountComponent,
     FeedComponent,
     LoadingSpinnerComponent,
-    GalleryComponent
+    GalleryComponent,
+    MyAccountComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

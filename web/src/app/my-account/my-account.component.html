@@ -1,0 +1,29 @@
+<mat-card>
+  <h1>Minha Conta</h1>
+  <form [formGroup]="myAccountForm">
+
+      <div class="picture-container">
+        <img *ngIf="myAccountForm.controls.picture.value" [src]="myAccountForm.controls.picture.value" class="picture">
+      </div>
+
+      <input type="text" formControlName="username" placeholder="Login">
+
+      <input type="email" formControlName="email" placeholder="E-Mail">
+
+      <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
+      
+      <div class="file-upload">
+        <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
+        
+        <button mat-raised-button color="primary" (click)="fileUpload.click()">
+          <mat-icon routerLink="/">attach_file</mat-icon>
+          <span>{{"Alterar foto"}}</span>
+        </button>
+     </div>
+
+     <button mat-raised-button color="primary" (click)="submit()">Salvar</button>
+
+     <button mat-raised-button color="primary" (click)="changePassword()">Alterar Senha</button>
+     
+  </form>
+</mat-card>

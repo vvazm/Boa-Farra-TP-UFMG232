@@ -10,12 +10,56 @@ import { MatDialog } from '@angular/material/dialog';
 export class MyAccountService {
   
   restAdress = 'http://localhost:4444/user';
+  changePasswordAdress = 'http://localhost:4444/changePassword';
 
   constructor(
     private http: HttpClient,
     private dialog: MatDialog
   ) {}
 
+  submit(form: any) {
+    const postJSON = {
+      username: form.username,
+      password: form.password,
+      email: form.email,
+      picture: form.picture
+    };
+
+    return this.http.put(this.restAdress, postJSON)
+    .pipe(
+      catchError((err: HttpErrorResponse) => {
+        this.raiseDialog('Ops!', 'Algo deu errado, tente novamente mais tarde');
+        throw err;
+      })
+    )
+  }
+
+  
+  changePassword(newPassword: { last_password: string ; password: string; confirm_password: string; }) {
+    return this.http.put(this.changePasswordAdress, newPassword)
+    .pipe(
+      catchError((err: HttpErrorResponse) => {
+        this.raiseDialog('Ops!', 'Algo deu errado, tente novamente mais tarde');
+        throw err;
+      })
+    )
+  }
+
+
+
+
+  getMyAccount() {
+    return this.http.get(this.restAdress)
+    .pipe(
+      catchError((err: HttpErrorResponse) => {
+        this.raiseDialog('Ops!', 'Erro ao recuperar dados do usuário, tente novamente mais tarde');
+        throw err;
+      })
+    )
+  }
+
+
+  
   getMyAccountByToken(token: string) {
     const headers = {
       Authorization: `Bearer ${token}`
