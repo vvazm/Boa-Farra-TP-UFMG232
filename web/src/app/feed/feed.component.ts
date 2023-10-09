@@ -50,23 +50,17 @@ export class FeedComponent implements OnInit {
         const post: Post = {
           barName: _post['key_pub_post']['key_name_pub'],
           barPicture:  _post['key_pub_post']['key_picture_pub'],
-          carrousel: [
-            {
-              picture: _post['key_picture_post'],
-              author: _post['key_pub_post']['key_name_pub']
-            }
-          ],
-          people: [
-            {
-              name: _post['key_pub_post']['key_name_pub'],
-              picture:  _post['key_pub_post']['key_picture_pub']
-            }
-          ],
+          carrousel: [],
+          people: [],
           origi: _post
         };
 
         this.feedService.getPostCheckins(post.origi['_id']).subscribe((resCheckins: any) => {
-          resCheckins.content.forEach((_checkin: any) => {
+          const sortedCheckins = resCheckins.content.sort((a: any, b: any) => {
+            return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+          });
+
+          sortedCheckins.forEach((_checkin: any) => {
             post.carrousel.push({
               picture: _checkin['key_picture_checkin'],
               author: _checkin['key_user_checkin']['key_username_user']
@@ -75,6 +69,18 @@ export class FeedComponent implements OnInit {
               name: _checkin['key_user_checkin']['key_username_user'],
               picture: _checkin['key_user_checkin']['key_picture_user']
             });
+          });
+
+          post.carrousel.push(
+            {
+              picture: _post['key_picture_post'],
+              author: _post['key_pub_post']['key_name_pub']
+            }
+          )
+
+          post.people.push({
+            name: _post['key_pub_post']['key_name_pub'],
+            picture:  _post['key_pub_post']['key_picture_pub']
           });
 
           this.feed.posts.push(post);
