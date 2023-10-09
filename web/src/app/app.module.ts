@@ -30,6 +30,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ChangePasswordComponent } from './modals/changepassword/changepassword.component';
 import { AuthInterceptor } from './login/auth.intercptor';
 import { LoadingSpinnerInterceptor } from './utils/loading-spinner/loading-spinner.intercptor';
+import { NewPostComponent } from './modals/newpost/newpost.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { LoadingSpinnerInterceptor } from './utils/loading-spinner/loading-spinn
     LoadingSpinnerComponent,
     GalleryComponent,
     MyAccountComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,

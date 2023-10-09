@@ -1,11 +1,20 @@
 <div class="feed-container">
-  <button mat-raised-button color="primary" class="add-picture-button" *ngIf="loginStatus"
-  (click)="addPicture()" >
-    <h2>Adicionar Foto</h2>
+  <button mat-raised-button color="primary" class="add-picture-button" *ngIf="loginStatus && userType === 'user'"
+  (click)="addCheckin()" >
+    <h2>Adicionar Checkin</h2>
   </button>
 
+  <button mat-raised-button color="primary" class="add-picture-button" *ngIf="loginStatus && userType === 'pub'"
+  (click)="addPost()" >
+    <h2>Adicionar Post</h2>
+  </button>
+
+
   <mat-card *ngFor="let post of feed.posts" class="post-card">
-    <h1>{{ post.barName }} : {{ post.barPicture }}</h1>
+    <h1 class="post-title"> 
+      <img [src]="post.barPicture" alt="{{ post.barName }}'s picture"> 
+      {{ post.barName }}
+    </h1>
 
     <app-gallery [items]="post.carrousel!"></app-gallery>
 

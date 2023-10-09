@@ -3,6 +3,10 @@ export interface Feed {
   posts: Post[];
 }
 
+export interface PostRequest {
+  picture: string; // Base64
+}
+
 export interface Post {
   barName: String;
   barPicture: string; // Base64
