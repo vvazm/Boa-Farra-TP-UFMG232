@@ -31,6 +31,9 @@ import { ChangePasswordComponent } from './modals/changepassword/changepassword.
 import { AuthInterceptor } from './login/auth.intercptor';
 import { LoadingSpinnerInterceptor } from './utils/loading-spinner/loading-spinner.intercptor';
 import { NewPostComponent } from './modals/newpost/newpost.component';
+import { NewCheckinComponent } from './modals/newcheckin/newcheckin.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,8 @@ import { NewPostComponent } from './modals/newpost/newpost.component';
     GalleryComponent,
     MyAccountComponent,
     ChangePasswordComponent,
-    NewPostComponent
+    NewPostComponent,
+    NewCheckinComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,9 @@ import { NewPostComponent } from './modals/newpost/newpost.component';
     MatProgressSpinnerModule,
     MatListModule,
     MatRadioModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule,
+    MatFormFieldModule
   ],
   providers: [
     LoginService,

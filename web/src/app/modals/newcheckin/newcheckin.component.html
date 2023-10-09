@@ -1,0 +1,43 @@
+<h1>Checkin</h1>
+
+<p>Para iniciar o checkin escolha um Post</p>
+<form [formGroup]="newCheckinForm">
+  <div class="dropdown">
+    <mat-form-field>
+      <mat-label>Checkin em</mat-label>
+      <mat-select  formControlName="post">
+        <mat-option *ngFor="let post of data.feed.posts" [value]="post.origi._id">
+          {{post.barName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+
+
+  <div class="post-picture-container" *ngIf="newCheckinForm.controls.picture.value">
+    <img  [src]="newCheckinForm.controls.picture.value" class="picture">
+  </div>
+
+  <div class="file-upload">
+    <input type="file" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
+
+    <button mat-raised-button color="primary" (click)="fileUpload.click()" *ngIf="!newCheckinForm.controls.picture.value" class="invalid">
+      <mat-icon routerLink="/">attach_file</mat-icon>
+      <span>{{"Enviar Foto"}}</span>
+    </button>
+    
+    <button mat-raised-button color="primary" (click)="fileUpload.click()" *ngIf="newCheckinForm.controls.picture.value">
+      <mat-icon routerLink="/">attach_file</mat-icon>
+      <span>{{"Alterar foto"}}</span>
+    </button>
+  </div>
+
+
+  <button mat-raised-button color="accent" (click)="submit()">Confirmar</button>
+</form>
+
+
+<button mat-icon-button class="close-button" (click)="close()">
+  <mat-icon>close</mat-icon>
+</button>

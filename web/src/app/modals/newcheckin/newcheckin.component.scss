@@ -1,0 +1,47 @@
+h1 {
+  text-align: center;
+}
+
+form input {
+  display: block;
+  margin: 20px auto;
+  padding: 10px ;
+  height: 30px;
+  width: 190px;
+}
+
+input.ng-invalid, .invalid {  
+  border: 1px solid transparent;
+  box-shadow: inset 0 0 3px 0 #F58;
+  padding: 10px;
+}
+
+form button {
+  display: block;
+  margin: 20px auto;
+  height: 50px;
+  width: 215px;
+}
+
+p {
+  text-align: center;
+}
+
+.post-picture-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 500px;
+  height: 500px;
+}
+
+.close-button {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: center;
+}

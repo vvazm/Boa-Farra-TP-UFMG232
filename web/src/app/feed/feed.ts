@@ -7,11 +7,18 @@ export interface PostRequest {
   picture: string; // Base64
 }
 
+export interface CheckinRequest {
+  picture: string; // Base64
+  post: any;
+
+}
+
 export interface Post {
   barName: String;
   barPicture: string; // Base64
-  carrousel?: Carrousel[];
-  people?: PostPerson[];
+  carrousel: Carrousel[];
+  people: PostPerson[];
+  origi: any;
 }
 
 export interface PostPerson {

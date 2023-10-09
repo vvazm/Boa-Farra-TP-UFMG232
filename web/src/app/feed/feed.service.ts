@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Feed, PostRequest } from './feed';
+import { CheckinRequest, Feed, PostRequest } from './feed';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs';
 import { DialogComponent } from '../modals/dialog/dialog.component';
@@ -12,6 +12,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class FeedService {
 
   restAdress = 'http://localhost:4444/post';
+  restAdressCheckin = 'http://localhost:4444/checkin';
+  restAdressCheckinByPost = 'http://localhost:4444/postCheckins';
 
   constructor(
     private http: HttpClient,
@@ -32,7 +34,21 @@ export class FeedService {
         throw err;
       })
     )
-    
+  }
+
+  addCheckin(form: any) {
+    const checkinRequest: CheckinRequest = {
+      picture: form.picture,
+      post: form.post
+    };
+
+    return this.http.post(this.restAdressCheckin, checkinRequest)
+    .pipe(
+      catchError((err: HttpErrorResponse) => {
+        this.raiseDialog('Ops!', 'Algo deu errado, tente novamente mais tarde');
+        throw err;
+      })
+    )
   }
 
   getPosts() {
@@ -45,28 +61,14 @@ export class FeedService {
     );
   }
 
-  loadFeed(): Feed {
-    const feed: Feed = {
-      highlight: undefined,
-      posts: [
-        {
-          barName: 'Pingucos e Alcolatras Não Anonimos Bar',
-          barPicture: '1',
-          carrousel: [
-          ],
-          people: [
-          ]
-        },
-          {
-            barName: 'Copo Sujo Ultra Beer',
-            barPicture: '2',
-            carrousel: [
-            ]
-          }
-      ]
-    }
-
-    return feed;
+  getPostCheckins(id: string) {
+    return this.http.get(this.restAdressCheckinByPost + '/' + id)
+    .pipe(
+      catchError((err: HttpErrorResponse) => {
+        this.raiseDialog('Ops!', 'Não foi possível recuperar os checkins, tente novamente mais tarde');
+        throw err;
+      })
+    );
   }
 
   raiseDialog(title: string, message: string): void {

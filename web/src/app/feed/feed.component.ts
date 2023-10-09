@@ -9,6 +9,7 @@ import { Feed, Post, PostPerson } from './feed';
 import { FeedService } from './feed.service';
 import { LoginService } from '../login/login.service';
 import { NewPostComponent } from '../modals/newpost/newpost.component';
+import { NewCheckinComponent } from '../modals/newcheckin/newcheckin.component';
 
 @Component({
   selector: 'app-feed',
@@ -39,8 +40,11 @@ export class FeedComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //this.feed = this.feedService.loadFeed();
+    this.loadFeed();
+  }
 
+  loadFeed() {
+    this.feed.posts = [];
     this.feedService.getPosts().subscribe((res: any) => {
       res.content.forEach((_post: any) => {
         const post: Post = {
@@ -57,28 +61,51 @@ export class FeedComponent implements OnInit {
               name: _post['key_pub_post']['key_name_pub'],
               picture:  _post['key_pub_post']['key_picture_pub']
             }
-          ]
+          ],
+          origi: _post
         };
 
-        this.feed.posts.push(post);
-      });
+        this.feedService.getPostCheckins(post.origi['_id']).subscribe((resCheckins: any) => {
+          resCheckins.content.forEach((_checkin: any) => {
+            post.carrousel.push({
+              picture: _checkin['key_picture_checkin'],
+              author: _checkin['key_user_checkin']['key_username_user']
+            });
+            post.people.push({
+              name: _checkin['key_user_checkin']['key_username_user'],
+              picture: _checkin['key_user_checkin']['key_picture_user']
+            });
+          });
 
-      console.log(res);
+          this.feed.posts.push(post);
+        });
+      });
     });
-    
   }
 
   addPost() {
-    this.dialog.open(NewPostComponent, {
+    const dialogRef = this.dialog.open(NewPostComponent, {
       width: '600px',
       hasBackdrop: false,
-      data: {  }
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadFeed();
     });
   }
   
 
   addCheckin() {
+    const dialogRef = this.dialog.open(NewCheckinComponent, {
+      width: '600px',
+      hasBackdrop: false,
+      data: { feed: this.feed }
+    }); 
 
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadFeed();
+    });
   }
 
   addCheckinTo(postId: string) {
