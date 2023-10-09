@@ -33,6 +33,12 @@ h3 {
   overflow: hidden;
 }
 
+.person-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .person-legend {
   position: absolute;
   bottom: 0; 
