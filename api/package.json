@@ -1,0 +1,33 @@
+{
+  "name": "boafarra",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoneGabriel/BoaFarra.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoneGabriel/BoaFarra/issues"
+  },
+  "homepage": "https://github.com/JoneGabriel/BoaFarra#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.4.5",
+    "node-vault": "^0.10.2",
+    "nodemailer": "^6.9.4",
+    "nodemon": "^3.0.1"
+  }
+}
